@@ -61,8 +61,7 @@ public class Cell extends Rectangle
         {
             setLiveOrDead( false );
         }
-        
-        if( check() == false )
+        else if( check() == false )
         {
             setLiveOrDead( true );
         }
@@ -82,7 +81,7 @@ public class Cell extends Rectangle
             life = false;
             setFillColor( Color.BLACK );
         }
-        if( a == true );
+        else
         {
             life = true;
             setFillColor( Color.WHITE );

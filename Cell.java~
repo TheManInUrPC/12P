@@ -17,7 +17,7 @@ import javax.swing.*;
 
 
 
-public class Cell implements   KeyListener
+public class Cell extends Rectangle
 {  
     public static final int SIZE = 10;  // size of cell
     public static final int COLS = 70;  // number of colums 
@@ -34,12 +34,12 @@ public class Cell implements   KeyListener
     private int newRow, newCol;
     private Scanner input;
     private static JFileChooser chooser = null;
-    
+    private boolean life = false;
     //--------------------------- <init> -----------------------------------
     /*
      * 
      */
-    public Cell( int x, int y ) extends Rectangle
+    public Cell( int x, int y ) 
     {
         
         
@@ -51,17 +51,43 @@ public class Cell implements   KeyListener
         
         
         
+    }
+    
+    public void mouseClicked( MouseEvent e )
+    {
+        e.getPoint();
         
+        if( check() == true )
+        {
+            setLiveOrDead( false );
+        }
         
-        
-        
-        
+        if( check() == false )
+        {
+            setLiveOrDead( true );
+        }
         
         
     }
     
+    public boolean check()
+    {
+        return life;
+    }
     
-    
+    public void setLiveOrDead( boolean a )
+    {
+        if( a == false )
+        {
+            life = false;
+            setFillColor( Color.BLACK );
+        }
+        if( a == true );
+        {
+            life = true;
+            setFillColor( Color.WHITE );
+        }
+    }
     
     
     
@@ -72,7 +98,7 @@ public class Cell implements   KeyListener
     public static void main( String arg[ ] ) 
     {
         Frame frame = new Frame();
-        Cell app = new Cell( ); 
+        Cell app = new Cell( 10, 10 ); 
         
         
         
