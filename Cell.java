@@ -46,7 +46,7 @@ public class Cell extends Rectangle
         
         super( x , y );
         super.setColor( Color.BLACK );
-        super.setFrameColor( Color.BLACK );
+        super.setFrameColor( Color.GREEN );
         super.setSize( SIZE, SIZE );
         
         

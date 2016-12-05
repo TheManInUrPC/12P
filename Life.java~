@@ -3,7 +3,7 @@
  * Life
  * Lab 21
  * 
- * Darien A. Blow mlb
+ * mlb
  * 
  */
 
@@ -92,28 +92,8 @@ public class Life implements   KeyListener
         
         if( code == KeyEvent.VK_UP )
         {
-            System.out.println("LOADING FILE");
-        
+            
             input = getFileScanner();
-            
-            
-            int s = 0;
-            int row1 = 0;
-            int col1 = 0;
-            
-            while( input.hasNextInt() )
-            {
-                s = input.nextInt();
-                
-                row1 = (int)(Math.ceil( s / 50 ));
-                
-                    
-                field[row1][col1].setFillColor( Color.WHITE );
-                
-                
-            }
-                
-            
 
              
         }  
@@ -127,13 +107,9 @@ public class Life implements   KeyListener
                     field[r][c].setFrameColor( Color.BLACK );
                 }
             }
-            
-             System.out.println("CLEARING ALL CELLS" );
-        
         }
         else if( code == KeyEvent.VK_RIGHT )
         {
-            System.out.println( "UPDATING STATE" );
             
         }
         
