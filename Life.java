@@ -57,7 +57,7 @@ public class Life implements   KeyListener
         
         
         
-    
+        
         
         
         
@@ -73,11 +73,11 @@ public class Life implements   KeyListener
         CellRecord cr1 = new CellRecord( 10 , 20 );
         cr1.setReturnTo( -1, -1 );
         stack.push( cr1 );
-
+        
         
     }
     
-   
+    
     
     
     //--------------------------------------------------------------------
@@ -88,34 +88,39 @@ public class Life implements   KeyListener
     public void inputKeys( int code )
     {
         
-
+        
         
         if( code == KeyEvent.VK_UP )
         {
             System.out.println("LOADING FILE");
-        
+            
             input = getFileScanner();
             
-            
-            int s = 0;
             int row1 = 0;
             int col1 = 0;
             
-            while( input.hasNextInt() )
-            {
-                s = input.nextInt();
-                
-                row1 = (int)(Math.ceil( s / 50 ));
-                
-                    
-                field[row1][col1].setFillColor( Color.WHITE );
-                
-                
-            }
-                
+            String s = "";
             
-
+            while( input.hasNext() )
+            {
+                
+                s = input.nextLine();
+                
+                int firstInt = Integer.valueOf( s.substring( 0 , s.indexOf( " " ) ) );
+                int secondInt = Integer.valueOf( s.substring( s.indexOf( " " ) + 1 ) );
+                
+                field[ firstInt ][ secondInt ].setFillColor( Color.WHITE );
              
+            }
+            
+          
+                
+                
+        
+            
+            
+            
+            
         }  
         else if( code == KeyEvent.VK_DOWN )
         {
@@ -128,8 +133,8 @@ public class Life implements   KeyListener
                 }
             }
             
-             System.out.println("CLEARING ALL CELLS" );
-        
+            System.out.println("CLEARING ALL CELLS" );
+            
         }
         else if( code == KeyEvent.VK_RIGHT )
         {
@@ -139,7 +144,7 @@ public class Life implements   KeyListener
         
         
         
-
+        
         
         
     }
