@@ -28,7 +28,7 @@ public class Life implements   KeyListener
     
     
     
-    private Rectangle [ ] [ ] field; // the playing field
+    private Cell [ ] [ ] field; // the playing field
     
     private Stack<CellRecord> stack;
     private CellRecord cr1, cr2;
@@ -36,6 +36,7 @@ public class Life implements   KeyListener
     private int newRow, newCol;
     private Scanner input;
     private static JFileChooser chooser = null;
+    private int j, k;
     
     //--------------------------- <init> -----------------------------------
     /*
@@ -151,13 +152,13 @@ public class Life implements   KeyListener
     
     public void update()
     {
-        for( int r = 0; r < ROWS; r++ )
+        for( j = 0; j < ROWS; j++ )
         {
-            for( int c = 0; c < COLS; c++ )
+            for( k = 0; k < COLS; k++ )
             {
-                if( field[r][c].check() == true )
+                if( field[j][k].check() == true )
                 {
-                    
+                    count();
                 }
             }
         }
@@ -168,31 +169,32 @@ public class Life implements   KeyListener
     
     int count = 0;
     
-    if ( field[r - 1][c - 1] ) 
+    if ( field[j - 1][k - 1].check() == true ) 
     {
         ++count;
     }
-    if ( field[r][c - 1] ) {
+    if ( field[j][k - 1].check() == true ) {
         ++count;
     }
-    if ( field[r + 1 ][c - 1 ] ) {
+    if ( field[j + 1 ][k - 1 ].check() == true ) {
         ++count;
     }
-    if ( field[r + 1][c] ) {
+    if ( field[j + 1][k].check() == true ) {
         ++count;
     }
-    if ( field[r + 1][c + 1] ) {
+    if ( field[j + 1][k + 1].check() == true ) {
         ++count;
     }
-    if ( field[r][c + 1] ) {
+    if ( field[j][k + 1].check() == true ) {
         ++count;
     }
-    if ( field[r - 1][c + 1] ) {
+    if ( field[j - 1][k + 1].check() == true ) {
         ++count;
     }
-    if ( field[r - 1][c] ) {
+    if ( field[j - 1][k].check() == true ) {
         ++count;
     }
+    
     return count;       
             
   }
