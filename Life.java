@@ -141,6 +141,8 @@ public class Life implements   KeyListener
         {
             System.out.println( "UPDATING STATE" );
             
+            update();
+            
         }
         
         
@@ -158,40 +160,91 @@ public class Life implements   KeyListener
             {
                 if( field[j][k].check() == true )
                 {
-                    count();
+                    int life = lifeCount( j , k );
+                    
+                    if( life < 2 )
+                    {
+                        field[j][k].setLiveOrDead( false );
+                    }
+                    if( life > 3 )
+                    {
+                        field[j][k].setLiveOrDead( false );
+                    }
+                    else
+                    {
+                        
+                    }
+                    
                 }
             }
         }
+        
+        
     }
         
-   public void count()
+  public int lifeCount( int i, int l )
   {
     
     int count = 0;
     
-    if ( field[j - 1][k - 1].check() == true ) 
+    if ( field[i - 1][l - 1].check() == true ) 
     {
         ++count;
     }
-    if ( field[j][k - 1].check() == true ) {
+    if ( field[i][l - 1].check() == true ) {
         ++count;
     }
-    if ( field[j + 1 ][k - 1 ].check() == true ) {
+    if ( field[i + 1 ][l - 1 ].check() == true ) {
         ++count;
     }
-    if ( field[j + 1][k].check() == true ) {
+    if ( field[i + 1][l].check() == true ) {
         ++count;
     }
-    if ( field[j + 1][k + 1].check() == true ) {
+    if ( field[i + 1][l + 1].check() == true ) {
         ++count;
     }
-    if ( field[j][k + 1].check() == true ) {
+    if ( field[i][l + 1].check() == true ) {
         ++count;
     }
-    if ( field[j - 1][k + 1].check() == true ) {
+    if ( field[i - 1][l + 1].check() == true ) {
         ++count;
     }
-    if ( field[j - 1][k].check() == true ) {
+    if ( field[i - 1][l].check() == true ) {
+        ++count;
+    }
+    
+    return count;       
+            
+  }
+  
+   public int deadCount( int m , int p )
+  {
+    
+    int count = 0;
+    
+    if ( field[ m - 1][p - 1].check() == false ) 
+    {
+        ++count;
+    }
+    if ( field[m][p - 1].check() == false ) {
+        ++count;
+    }
+    if ( field[m + 1 ][p - 1 ].check() == false ) {
+        ++count;
+    }
+    if ( field[m + 1][p].check() == false ) {
+        ++count;
+    }
+    if ( field[m + 1][p + 1].check() == false ) {
+        ++count;
+    }
+    if ( field[m][p + 1].check() == false ) {
+        ++count;
+    }
+    if ( field[m - 1][p + 1].check() == false ) {
+        ++count;
+    }
+    if ( field[m - 1][p].check() == false ) {
         ++count;
     }
     
