@@ -36,7 +36,6 @@ public class Life implements   KeyListener
     private int newRow, newCol;
     private Scanner input;
     private static JFileChooser chooser = null;
-    private int j, k;
     
     //--------------------------- <init> -----------------------------------
     /*
@@ -110,7 +109,7 @@ public class Life implements   KeyListener
                 int firstInt = Integer.valueOf( s.substring( 0 , s.indexOf( " " ) ) );
                 int secondInt = Integer.valueOf( s.substring( s.indexOf( " " ) + 1 ) );
                 
-                field[ firstInt ][ secondInt ].setFillColor( Color.WHITE );
+                field[ firstInt ][ secondInt ].setLiveOrDead( true );
                 
             }
             
@@ -142,6 +141,7 @@ public class Life implements   KeyListener
             System.out.println( "UPDATING STATE" );
             
             update();
+            updateDead();
             
         }
         
@@ -154,9 +154,9 @@ public class Life implements   KeyListener
     
     public void update()
     {
-        for( j = 0; j < ROWS; j++ )
+        for( int j = 0; j < ROWS; j++ )
         {
-            for( k = 0; k < COLS; k++ )
+            for( int k = 0; k < COLS; k++ )
             {
                 if( field[j][k].check() == true )
                 {
@@ -174,7 +174,30 @@ public class Life implements   KeyListener
                     {
                         
                     }
+         
+                }
+            }
+        }
+        
+        
+    }
+    
+    public void updateDead()
+    {
+        for( int j = 0; j < ROWS; j++ )
+        {
+            for( int k = 0; k < COLS; k++ )
+            {
+                if( field[j][k].check() == false )
+                {
+                    int life = lifeCount( j , k );
                     
+                    if( life == 3 )
+                    {
+                        field[j][k].setLiveOrDead( true );
+                    }
+
+         
                 }
             }
         }
@@ -217,40 +240,7 @@ public class Life implements   KeyListener
             
   }
   
-   public int deadCount( int m , int p )
-  {
-    
-    int count = 0;
-    
-    if ( field[ m - 1][p - 1].check() == false ) 
-    {
-        ++count;
-    }
-    if ( field[m][p - 1].check() == false ) {
-        ++count;
-    }
-    if ( field[m + 1 ][p - 1 ].check() == false ) {
-        ++count;
-    }
-    if ( field[m + 1][p].check() == false ) {
-        ++count;
-    }
-    if ( field[m + 1][p + 1].check() == false ) {
-        ++count;
-    }
-    if ( field[m][p + 1].check() == false ) {
-        ++count;
-    }
-    if ( field[m - 1][p + 1].check() == false ) {
-        ++count;
-    }
-    if ( field[m - 1][p].check() == false ) {
-        ++count;
-    }
-    
-    return count;       
-            
-  }
+  
         
         //---------------------- Scanner getFileScanner() ------------------
         /**
