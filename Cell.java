@@ -1,9 +1,9 @@
 //-------------------------------------------------------
 /**
  * Cell
- * Lab 21
  * 
- * mlb
+ * 
+ * Darien A. Blow mlb
  * 
  */
 
@@ -16,7 +16,13 @@ import java.io.*;
 import javax.swing.*;
 
 
-
+/**
+ * Cell class.
+ * 
+ * 
+ * @author Darien A. Blow
+ * 
+ */
 public class Cell extends Rectangle
 {  
     public static final int SIZE = 10;  // size of cell
@@ -36,8 +42,11 @@ public class Cell extends Rectangle
     private static JFileChooser chooser = null;
     private boolean life = false;
     //--------------------------- <init> -----------------------------------
-    /*
+    /**
+     * Constructor.
      * 
+     * @param x int
+     * @param y int
      */
     public Cell( int x, int y ) 
     {
@@ -52,7 +61,13 @@ public class Cell extends Rectangle
         
         
     }
-    
+    /**
+     * Mouse clicked.
+     * 
+     * 
+     * @param e MouseEvent
+     * 
+     */ 
     public void mouseClicked( MouseEvent e )
     {
         e.getPoint();
@@ -69,11 +84,25 @@ public class Cell extends Rectangle
         
     }
     
+    /**
+     * Check accessor.
+     * 
+     * 
+     * @return life int
+     * 
+     */
     public boolean check()
     {
         return life;
     }
     
+    /**
+     * 
+     * setLiveOrDead Method.
+     * 
+     * @param a boolean
+     * 
+     */
     public void setLiveOrDead( boolean a )
     {
         if( a == false )
@@ -91,8 +120,11 @@ public class Cell extends Rectangle
     
     
     //--------------------------- main -----------------------------------
-    /*
-     * Run the app
+    /**
+     * Run the app.
+     * 
+     * 
+     * @param arg String
      */
     public static void main( String arg[ ] ) 
     {
